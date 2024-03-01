@@ -1,0 +1,17 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: cephfs-sc-hdd-d8-p4
+  namespace: cephfs
+provisioner: csi-cephfsplugin-provisioner
+parameters:
+  clusterID: 77003272-99bd-4ba2-a860-558317c01e06
+  fsName: CFS-E-ByOSD-D4-P2
+  monitors: 192.168.10.81:6789,192.168.10.82:6789,192.168.10.83:6789
+  adminId: admin
+  adminSecretName: ceph-admin-secret
+  adminSecretNamespace: cephfs
+  claimRoot: /Docker-HDD/Kubernetes/
+  path: /Docker-HDD/Kubernetes/
+reclaimPolicy: Retain
+allowVolumeExpansion: true
